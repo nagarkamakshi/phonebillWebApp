@@ -16,7 +16,6 @@ public class PhoneBillRestClient extends HttpRequestHelper
 
     private final String url;
 
-
     /**
      * Creates a client to the Phone Bil REST service running on the given host and port
      * @param hostName The name of the host
@@ -28,23 +27,43 @@ public class PhoneBillRestClient extends HttpRequestHelper
     }
 
     /**
-     * Returns all keys and values from the server
+     * Returns all calls from the server
      */
-    public Response getAllKeysAndValues() throws IOException
+    public Response getAllCalls() throws IOException
     {
-        return get(this.url );
+        return get(this.url);
     }
 
     /**
-     * Returns all values for the given key
+     * Returns all values for the given customerName
      */
-    public Response getValues( String key ) throws IOException
+    public Response getCalls( String customerName ) throws IOException
     {
-        return get(this.url, "key", key);
+        return get(this.url, "customer", customerName);
     }
 
-    public Response addKeyValuePair( String key, String value ) throws IOException
+    /**
+     * This method sends request to server to get Calls made in specified time.
+     * @param customerName Name of the customer
+     * @param startTime start time for range
+     * @param endTime end time for range
+     * @return HttpResponse from server , PhoneBill with calls at specified time.
+     * @throws IOException
+     */
+    public Response getCallsForDates( String customerName,String startTime,String endTime ) throws IOException
     {
-        return post( this.url, "key", key, "value", value );
+        return get(this.url, "customer", customerName,"startTime", startTime,"endTime", endTime);
+    }
+
+    /**
+     *Adds the Phone Call to the PhoneBill.
+     * @return Store call in the server.
+     * @throws IOException
+     */
+    public Response addPhoneCall(String customerName,String caller,String callee, String startTime,String endTime ) throws IOException
+    {
+        return post( this.url,"customerName", customerName,"caller",caller,"callee"
+                ,callee,"startTime",startTime,"endTime",endTime);
+
     }
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>HTML forms for interacting with the REST API</title>
+    <style type="text/css">
+        div {
+            padding-bottom: 1em;
+        }
+    </style>
+</head>
+<h2>
+                Phone Bill Web Application
+</h2>
+<h4>
+    These forms let you interact with the simple PhoneBill REST API that
+    is created by the project archetype.
+</h4>
+<hr>
+<div>
+    <form method="get" action="calls">
+        <h3>List all calls</h3> <input type="submit" value="Phone Bill"/>
+    </form>
+</div>
+
+<div>
+    <form method="post" action="calls">
+        <h3>Create a new Phone Call</h3>
+        Customer Name: <input name="customerName" type="text" size="10"/><br><br>
+        Caller Number: <input name="caller" type="text" size="10"/>   Callee Number: <input name="callee" type="text" size="10"/><br><br>
+        Start time: <input name="startTime" type="text" size="15"/>    End Time: <input name="endTime" type="text" size="15"/><br><br>
+        <input type="submit" value="Add Call"/>
+    </form>
+</div>
+
+<div>
+    <form method="get" action="calls">
+        <h3>List Calls for Customer</h3>
+        <input name="customer" type="text" size="10"/>
+        <input type="submit" value="Search"/>
+    </form>
+</div>
+
+<div>
+    <form method="get" action="calls">
+        <h3>List Calls for Customer at Specified Time</h3>
+        Customer: <input name="customer" type="text" size="10"/> StartTime: <input name="startTime" type="text" size="15"/> EndTime: <input name="endTime" type="text" size="15"/><br><br>
+        <input type="submit" value="Search"/>
+    </form>
+</div>
+
+</body>
+</html>

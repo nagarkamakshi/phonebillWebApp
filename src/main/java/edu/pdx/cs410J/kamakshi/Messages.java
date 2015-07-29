@@ -25,4 +25,13 @@ public class Messages
     {
         return String.format( "Mapped %s to %s", key, value );
     }
+
+    public static String mappedCustomerCall(String customerName, PhoneCall phoneCall) {
+
+        return  String.format("Mapped %s to %s", customerName, phoneCall);
+    }
+
+    public static String formatCustomerCallPair(String customer, PhoneCall pc) {
+        return String.format("  %s -> %s", customer, pc);
+    }
 }
